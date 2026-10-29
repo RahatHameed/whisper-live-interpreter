@@ -1,0 +1,24 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.9", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      # The unit tests replace all models with fakes, so only numpy and pytest are needed
+      - run: python -m pip install numpy pytest
+      - run: python -m pytest -q
+      - name: CLI parses on this platform
+        run: python -m live_interpreter run --help > /dev/null

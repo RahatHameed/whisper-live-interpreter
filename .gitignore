@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Downloaded models and voices (large, re-downloadable)
+voices/
+models/
+
+# Local settings (`make language`, personal glossary)
+.interpreter.conf
+glossary.cfg
+
+# Test audio and meeting output - never commit meeting content
+*.wav
+*.mp3
+*.log
+transcripts/
+*.txt
+!requirements.txt
+!requirements-dev.txt
+
+# Editors / tools
+.idea/
+.vscode/
+.claude/
+
+# Personal notes, kept local
+CLAUDE.md
+docs/PLAN.md
