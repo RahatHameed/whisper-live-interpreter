@@ -1,0 +1,20 @@
+[project]
+name = "whisper-live-interpreter"
+version = "0.2.0"
+description = "Local live interpreter: hear any spoken language in your own language (Whisper + Piper)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = ["faster-whisper>=1.1", "piper-tts>=1.3", "numpy", "sentencepiece"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+live-interpreter = "live_interpreter.cli:main"
+
+[tool.setuptools]
+packages = ["live_interpreter", "live_interpreter.audio"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
