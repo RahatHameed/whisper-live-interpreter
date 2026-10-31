@@ -2,6 +2,13 @@
 
 Thanks for helping! The project goals are **fully local** (no cloud or paid APIs at runtime), **low delay**, and **easy to run** (`make install && make run`).
 
+## Workflow
+`main` is protected: no direct pushes or force-pushes. Work on a branch, open a pull request, and merge once all
+CI checks pass. The rules live in `.github/rulesets/protect-main.json`; a maintainer applies them with:
+```bash
+gh api -X POST repos/{owner}/{repo}/rulesets --input .github/rulesets/protect-main.json
+```
+
 ## Setup
 ```bash
 make install        # dependencies, models, voice
